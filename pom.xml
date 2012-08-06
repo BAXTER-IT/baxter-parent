@@ -1,18 +1,20 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
   <modelVersion>4.0.0</modelVersion>
 
-  <groupId>com.baxter.stat</groupId>
-  <artifactId>statistics</artifactId>
-  <version>0.0.2-SNAPSHOT</version>
+  <groupId>com.baxter</groupId>
+  <artifactId>parent</artifactId>
+  <version>1.0-SNAPSHOT</version>
   <packaging>pom</packaging>
-  <name>Statistics Container</name>
-  
+  <name>Baxter Parent POM</name>
+
   <inceptionYear>2012</inceptionYear>
 
   <scm>
-    <connection>scm:svn:svn://svn/pe/statistics/trunk</connection>
-    <developerConnection>scm:svn:svn://svn/pe/statistics/trunk</developerConnection>
+    <connection>scm:svn:svn://svn/pe/baxter-parent/trunk</connection>
+    <developerConnection>scm:svn:svn://svn/pe/baxter-parent/trunk</developerConnection>
   </scm>
 
   <organization>
@@ -20,16 +22,11 @@
     <url>http://baxter-it.com</url>
   </organization>
 
-  <issueManagement>
-    <system>JIRA</system>
-    <url>http://jira.baxter-fx.com/jira/secure/project/ViewProject.jspa?pid=10420</url>
-  </issueManagement>
-
   <licenses>
 
     <license>
-      <name>Baxter</name>
-      <url>http://baxter.com/licenses/STATISTICS-1.0.txt</url>
+      <name>Baxter Default</name>
+      <url>http://baxter.com/licenses/DEFAULT-1.0.txt</url>
       <comments>Some comments to a license</comments>
       <distribution>manual</distribution>
     </license>
@@ -53,7 +50,7 @@
 
     <site>
       <id>qa-apache</id>
-      <url>scp://qa/var/www/products/statistics</url>
+      <url>scp://qa/var/www/products/${baxter.product.name}</url>
     </site>
 
   </distributionManagement>
@@ -127,7 +124,7 @@
                     </goals>
                   </pluginExecutionFilter>
                   <action>
-                    <ignore />
+                    <ignore/>
                   </action>
                 </pluginExecution>
               </pluginExecutions>
@@ -146,6 +143,14 @@
       </plugins>
     </pluginManagement>
     <plugins>
+      <plugin>
+        <artifactId>maven-site-plugin</artifactId>
+        <groupId>org.apache.maven.plugins</groupId>
+        <inherited>false</inherited>
+        <configuration>
+          <skipDeploy>true</skipDeploy>
+        </configuration>
+      </plugin>
       <plugin>
         <artifactId>buildnumber-maven-plugin</artifactId>
         <groupId>org.codehaus.mojo</groupId>
@@ -233,38 +238,6 @@
         <version>1.8.5</version>
       </dependency>
       <dependency>
-        <groupId>com.baxter</groupId>
-        <artifactId>common</artifactId>
-        <version>2.0.32</version>
-        <exclusions>
-          <exclusion>
-            <groupId>log4j</groupId>
-            <artifactId>log4j</artifactId>
-          </exclusion>
-        </exclusions>
-      </dependency>
-      <dependency>
-        <groupId>postgresql</groupId>
-        <artifactId>postgresql</artifactId>
-        <version>8.4-701.jdbc4</version>
-      </dependency>
-
-      <dependency>
-        <groupId>org.hsqldb</groupId>
-        <artifactId>hsqldb</artifactId>
-        <version>2.2.8</version>
-      </dependency>
-      <dependency>
-        <groupId>com.googlecode.disruptor</groupId>
-        <artifactId>disruptor</artifactId>
-        <version>2.10.1</version>
-      </dependency>
-      <dependency>
-        <groupId>${project.groupId}</groupId>
-        <artifactId>statistics-client</artifactId>
-        <version>${project.version}</version>
-      </dependency>
-      <dependency>
         <groupId>org.slf4j</groupId>
         <artifactId>slf4j-api</artifactId>
         <version>1.6.1</version>
@@ -298,11 +271,11 @@
       <groupId>ch.qos.logback</groupId>
       <scope>runtime</scope>
     </dependency>
-    
+
   </dependencies>
 
-  <modules>
-    <module>statistics-client</module>
-    <module>statistics-server</module>
-  </modules>
+  <properties>
+    <baxter.product.name>parent-pom</baxter.product.name>
+  </properties>
+
 </project>
