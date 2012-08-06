@@ -1,0 +1,308 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>com.baxter.stat</groupId>
+  <artifactId>statistics</artifactId>
+  <version>0.0.2-SNAPSHOT</version>
+  <packaging>pom</packaging>
+  <name>Statistics Container</name>
+  
+  <inceptionYear>2012</inceptionYear>
+
+  <scm>
+    <connection>scm:svn:svn://svn/pe/statistics/trunk</connection>
+    <developerConnection>scm:svn:svn://svn/pe/statistics/trunk</developerConnection>
+  </scm>
+
+  <organization>
+    <name>Baxter Technologies Ltd</name>
+    <url>http://baxter-it.com</url>
+  </organization>
+
+  <issueManagement>
+    <system>JIRA</system>
+    <url>http://jira.baxter-fx.com/jira/secure/project/ViewProject.jspa?pid=10420</url>
+  </issueManagement>
+
+  <licenses>
+
+    <license>
+      <name>Baxter</name>
+      <url>http://baxter.com/licenses/STATISTICS-1.0.txt</url>
+      <comments>Some comments to a license</comments>
+      <distribution>manual</distribution>
+    </license>
+
+  </licenses>
+
+  <distributionManagement>
+
+    <repository>
+      <id>release.baxter</id>
+      <name>Baxter Maven Repository Switchboard</name>
+      <layout>default</layout>
+      <url>http://qa/nexus/content/repositories/baxter-repository</url>
+    </repository>
+
+    <snapshotRepository>
+      <id>snapshot.baxter</id>
+      <name>Baxter Snapshots Repository</name>
+      <url>http://qa/nexus/content/repositories/baxter-snapshot/</url>
+    </snapshotRepository>
+
+    <site>
+      <id>qa-apache</id>
+      <url>scp://qa/var/www/products/statistics</url>
+    </site>
+
+  </distributionManagement>
+
+  <build>
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <artifactId>maven-compiler-plugin</artifactId>
+          <groupId>org.apache.maven.plugins</groupId>
+          <version>2.5.1</version>
+          <configuration>
+            <source>1.6</source>
+            <target>1.6</target>
+            <encoding>UTF-8</encoding>
+          </configuration>
+        </plugin>
+        <plugin>
+          <artifactId>maven-jar-plugin</artifactId>
+          <groupId>org.apache.maven.plugins</groupId>
+          <version>2.4</version>
+          <configuration>
+            <archive>
+              <manifestEntries>
+                <Date>${maven.build.timestamp}</Date>
+                <Revision>${buildNumber}</Revision>
+                <Branch>${scmBranch}</Branch>
+              </manifestEntries>
+            </archive>
+          </configuration>
+        </plugin>
+        <plugin>
+          <artifactId>maven-site-plugin</artifactId>
+          <groupId>org.apache.maven.plugins</groupId>
+          <version>3.1</version>
+        </plugin>
+        <plugin>
+          <artifactId>maven-resources-plugin</artifactId>
+          <groupId>org.apache.maven.plugins</groupId>
+          <version>2.5</version>
+        </plugin>
+        <plugin>
+          <artifactId>maven-dependency-plugin</artifactId>
+          <groupId>org.apache.maven.plugins</groupId>
+          <version>2.4</version>
+        </plugin>
+        <plugin>
+          <artifactId>unix-maven-plugin</artifactId>
+          <groupId>org.codehaus.mojo</groupId>
+          <version>1.0-alpha-5</version>
+        </plugin>
+        <plugin>
+          <artifactId>buildnumber-maven-plugin</artifactId>
+          <groupId>org.codehaus.mojo</groupId>
+          <version>1.0</version>
+        </plugin>
+        <plugin>
+          <groupId>org.eclipse.m2e</groupId>
+          <artifactId>lifecycle-mapping</artifactId>
+          <version>1.0.0</version>
+          <configuration>
+            <lifecycleMappingMetadata>
+              <pluginExecutions>
+                <pluginExecution>
+                  <pluginExecutionFilter>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-dependency-plugin</artifactId>
+                    <versionRange>[2.4,)</versionRange>
+                    <goals>
+                      <goal>copy-dependencies</goal>
+                    </goals>
+                  </pluginExecutionFilter>
+                  <action>
+                    <ignore />
+                  </action>
+                </pluginExecution>
+              </pluginExecutions>
+            </lifecycleMappingMetadata>
+          </configuration>
+        </plugin>
+        <plugin>
+          <artifactId>maven-release-plugin</artifactId>
+          <groupId>org.apache.maven.plugins</groupId>
+          <version>2.3.2</version>
+          <configuration>
+            <preparationGoals>clean install</preparationGoals>
+            <autoVersionSubmodules>true</autoVersionSubmodules>
+          </configuration>
+        </plugin>
+      </plugins>
+    </pluginManagement>
+    <plugins>
+      <plugin>
+        <artifactId>buildnumber-maven-plugin</artifactId>
+        <groupId>org.codehaus.mojo</groupId>
+        <configuration>
+          <doCheck>false</doCheck>
+          <doUpdate>false</doUpdate>
+          <getRevisionOnlyOnce>true</getRevisionOnlyOnce>
+        </configuration>
+        <executions>
+          <execution>
+            <phase>prepare-package</phase>
+            <goals>
+              <goal>create</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-resources-plugin</artifactId>
+        <configuration>
+          <encoding>UTF-8</encoding>
+        </configuration>
+      </plugin>
+      <plugin>
+        <artifactId>maven-site-plugin</artifactId>
+        <groupId>org.apache.maven.plugins</groupId>
+        <configuration>
+          <reportPlugins>
+            <plugin>
+              <artifactId>maven-changes-plugin</artifactId>
+              <groupId>org.apache.maven.plugins</groupId>
+              <version>2.7.1</version>
+              <configuration> </configuration>
+              <reportSets>
+                <reportSet>
+                  <reports>
+                    <report>changes-report</report>
+                  </reports>
+                </reportSet>
+              </reportSets>
+            </plugin>
+            <plugin>
+              <groupId>org.apache.maven.plugins</groupId>
+              <artifactId>maven-project-info-reports-plugin</artifactId>
+              <version>2.4</version>
+              <reportSets>
+                <reportSet>
+                  <reports>
+                    <report>project-team</report>
+                    <report>cim</report>
+                    <report>issue-tracking</report>
+                    <report>license</report>
+                    <report>scm</report>
+                    <report>index</report>
+                  </reports>
+                </reportSet>
+              </reportSets>
+            </plugin>
+          </reportPlugins>
+        </configuration>
+      </plugin>
+    </plugins>
+
+    <extensions>
+      <extension>
+        <groupId>org.apache.maven.wagon</groupId>
+        <artifactId>wagon-ssh</artifactId>
+        <version>1.0-beta-6</version>
+      </extension>
+    </extensions>
+
+  </build>
+
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>junit</groupId>
+        <artifactId>junit</artifactId>
+        <version>4.8</version>
+      </dependency>
+      <dependency>
+        <groupId>org.mockito</groupId>
+        <artifactId>mockito-all</artifactId>
+        <version>1.8.5</version>
+      </dependency>
+      <dependency>
+        <groupId>com.baxter</groupId>
+        <artifactId>common</artifactId>
+        <version>2.0.32</version>
+        <exclusions>
+          <exclusion>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+          </exclusion>
+        </exclusions>
+      </dependency>
+      <dependency>
+        <groupId>postgresql</groupId>
+        <artifactId>postgresql</artifactId>
+        <version>8.4-701.jdbc4</version>
+      </dependency>
+
+      <dependency>
+        <groupId>org.hsqldb</groupId>
+        <artifactId>hsqldb</artifactId>
+        <version>2.2.8</version>
+      </dependency>
+      <dependency>
+        <groupId>com.googlecode.disruptor</groupId>
+        <artifactId>disruptor</artifactId>
+        <version>2.10.1</version>
+      </dependency>
+      <dependency>
+        <groupId>${project.groupId}</groupId>
+        <artifactId>statistics-client</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.slf4j</groupId>
+        <artifactId>slf4j-api</artifactId>
+        <version>1.6.1</version>
+      </dependency>
+      <dependency>
+        <artifactId>logback-classic</artifactId>
+        <groupId>ch.qos.logback</groupId>
+        <version>1.0.1</version>
+      </dependency>
+    </dependencies>
+
+  </dependencyManagement>
+
+  <dependencies>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.mockito</groupId>
+      <artifactId>mockito-all</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-api</artifactId>
+    </dependency>
+    <dependency>
+      <artifactId>logback-classic</artifactId>
+      <groupId>ch.qos.logback</groupId>
+      <scope>runtime</scope>
+    </dependency>
+    
+  </dependencies>
+
+  <modules>
+    <module>statistics-client</module>
+    <module>statistics-server</module>
+  </modules>
+</project>
