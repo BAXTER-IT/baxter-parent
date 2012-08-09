@@ -5,8 +5,7 @@
     name="Baxter Parent">
     
     <bannerLeft>
-        <name>${project.name}</name>
-        <alt>${project.artifactId}</alt>
+        <name>Baxter Parent POM</name>
     </bannerLeft>
     
     <bannerRight>
