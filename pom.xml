@@ -4,15 +4,15 @@
 
   <groupId>com.baxter</groupId>
   <artifactId>parent</artifactId>
-  <version>1.0.2</version>
+  <version>1.0.3-SNAPSHOT</version>
   <packaging>pom</packaging>
   <name>Baxter Parent POM</name>
 
   <inceptionYear>2012</inceptionYear>
 
   <scm>
-    <connection>scm:svn:svn://svn/pe/${svn.project}/tags/parent-1.0.2</connection>
-    <developerConnection>scm:svn:svn://svn/pe/${svn.project}/tags/parent-1.0.2</developerConnection>
+    <connection>scm:svn:svn://svn/pe/${svn.project}/trunk</connection>
+    <developerConnection>scm:svn:svn://svn/pe/${svn.project}/trunk</developerConnection>
   </scm>
 
   <organization>
