@@ -10,17 +10,17 @@
 
   <inceptionYear>2012</inceptionYear>
 
-  <scm>
-    <connection>scm:svn:svn://svn/pe/${svn.project}/trunk</connection>
-    <developerConnection>scm:svn:svn://svn/pe/${svn.project}/trunk</developerConnection>
-  </scm>
-
   <organization>
     <name>Baxter Technologies Ltd</name>
     <url>http://baxter-it.com</url>
   </organization>
   
-  <url>http://qa/products/${baxter.product.name}</url>
+  <scm>
+    <connection>scm:svn:svn://svn/pe/baxter-parent/trunk</connection>
+    <developerConnection>scm:svn:svn://svn/pe/baxter-parent/trunk</developerConnection>
+  </scm>
+
+  <url>http://qa/products/baxter-parent</url>
 
   <licenses>
 
@@ -50,7 +50,7 @@
 
     <site>
       <id>qa-apache</id>
-      <url>scp://qa/var/www/products/${baxter.product.name}</url>
+      <url>scp://qa/var/www/products/baxter-parent</url>
     </site>
 
   </distributionManagement>
@@ -256,8 +256,6 @@
   </dependencies>
 
   <properties>
-    <baxter.product.name>baxter-parent</baxter.product.name>
-    <svn.project>baxter-parent</svn.project>
   </properties>
 
 </project>
