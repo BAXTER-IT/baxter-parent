@@ -11,14 +11,16 @@
   <inceptionYear>2012</inceptionYear>
 
   <scm>
-    <connection>scm:svn:svn://svn/pe/baxter-parent/trunk</connection>
-    <developerConnection>scm:svn:svn://svn/pe/baxter-parent/trunk</developerConnection>
+    <connection>scm:svn:svn://svn/pe/${svn.project}/trunk</connection>
+    <developerConnection>scm:svn:svn://svn/pe/${svn.project}/trunk</developerConnection>
   </scm>
 
   <organization>
     <name>Baxter Technologies Ltd</name>
     <url>http://baxter-it.com</url>
   </organization>
+  
+  <url>http://qa/products/${baxter.product.name}</url>
 
   <licenses>
 
@@ -169,7 +171,6 @@
         <artifactId>maven-site-plugin</artifactId>
         <groupId>org.apache.maven.plugins</groupId>
         <configuration>
-          <skipDeploy>true</skipDeploy>
           <reportPlugins>
             <plugin>
               <artifactId>maven-changes-plugin</artifactId>
@@ -255,7 +256,8 @@
   </dependencies>
 
   <properties>
-    <baxter.product.name>parent-pom</baxter.product.name>
+    <baxter.product.name>baxter-parent</baxter.product.name>
+    <svn.project>baxter-parent</svn.project>
   </properties>
 
 </project>
