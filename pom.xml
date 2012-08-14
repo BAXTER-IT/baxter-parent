@@ -1,11 +1,10 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.baxter</groupId>
 	<artifactId>parent</artifactId>
-	<version>1.0.8-SNAPSHOT</version>
+	<version>1.0.8</version>
 	<packaging>pom</packaging>
 	<name>Baxter Parent POM</name>
 
@@ -17,8 +16,8 @@
 	</organization>
 
 	<scm>
-		<connection>scm:svn:svn://svn/pe/baxter-parent/trunk</connection>
-		<developerConnection>scm:svn:svn://svn/pe/baxter-parent/trunk</developerConnection>
+		<connection>scm:svn:svn://svn/pe/baxter-parent/tags/parent-1.0.8</connection>
+		<developerConnection>scm:svn:svn://svn/pe/baxter-parent/tags/parent-1.0.8</developerConnection>
 	</scm>
 
 	<url>http://qa/products/baxter-parent</url>
@@ -287,7 +286,7 @@
 		<jira.status.InProgress>In Progress</jira.status.InProgress>
 		<!-- For JIRA Report -->
 		<jira.onlyCurrentVersion>true</jira.onlyCurrentVersion>
-		<jira.fixVersionIds></jira.fixVersionIds>
+		<jira.fixVersionIds />
 		<jira.component>${project.artifactId}</jira.component>
 		<jira.statusIds>Open,${jira.status.InProgress},Reopened,Resolved,Closed</jira.statusIds>
 		<jira.resolutionIds>Unresolved,Fixed,${jira.resolution.WontFix},Duplicate,Incomplete,${jira.resolution.CannotReproduce}</jira.resolutionIds>
