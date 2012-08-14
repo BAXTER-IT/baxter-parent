@@ -1,4 +1,5 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
 	<modelVersion>4.0.0</modelVersion>
 
@@ -275,6 +276,72 @@
 			<artifactId>slf4j-api</artifactId>
 		</dependency>
 	</dependencies>
+
+	<profiles>
+
+		<profile>
+			<id>ReplaceVersion</id>
+			<!-- Should be used before the release to adjust developmentVersion javadoc 
+				tags in source files. -->
+			<!-- Invoke as: mvn clean process-sources -DreplaceDevelopmentVersion=X.Y.Z -->
+			<!-- The java sources should contain @since ${developmentVersion} for 
+				API elements -->
+			<activation>
+				<property>
+					<name>replaceDevelopmentVersion</name>
+				</property>
+			</activation>
+			<build>
+				<pluginManagement>
+					<plugins>
+						<plugin>
+							<groupId>com.google.code.maven-replacer-plugin</groupId>
+							<artifactId>maven-replacer-plugin</artifactId>
+							<version>1.4.1</version>
+							<configuration>
+								<token>$${developmentVersion}</token>
+								<value>${replaceDevelopmentVersion}</value>
+								<includes>
+									<include>**/*.java</include>
+								</includes>
+								<ignoreErrors>true</ignoreErrors>
+								<regex>false</regex>
+							</configuration>
+							<executions>
+								<execution>
+									<id>replace-development-version</id>
+									<phase>process-sources</phase>
+									<goals>
+										<goal>replace</goal>
+									</goals>
+									<configuration>
+										<basedir>${project.build.sourceDirectory}</basedir>
+									</configuration>
+								</execution>
+								<execution>
+									<id>replace-test-development-version</id>
+									<phase>process-sources</phase>
+									<goals>
+										<goal>replace</goal>
+									</goals>
+									<configuration>
+										<basedir>${project.build.testSourceDirectory}</basedir>
+									</configuration>
+								</execution>
+							</executions>
+						</plugin>
+					</plugins>
+				</pluginManagement>
+				<plugins>
+					<plugin>
+						<groupId>com.google.code.maven-replacer-plugin</groupId>
+						<artifactId>maven-replacer-plugin</artifactId>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+
+	</profiles>
 
 	<properties>
 		<!-- In order to use JIRA report the project must contain issueManagemtn 
