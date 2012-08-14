@@ -292,6 +292,9 @@
 		<jira.resolutionIds>Unresolved,Fixed,${jira.resolution.WontFix},Duplicate,Incomplete,${jira.resolution.CannotReproduce}</jira.resolutionIds>
 		<jira.columnNames>Key,Type,Summary,Version,Status,Resolution,${jira.column.FixVersion},Assignee</jira.columnNames>
 		<jira.sortColumnNames>Id ASC,Fix Version DESC</jira.sortColumnNames>
+		<!-- You may override with your own credentials -->
+		<jira.user>mavenreader</jira.user>
+		<jira.password>mavenreader99</jira.password>
 	</properties>
 
 </project>
