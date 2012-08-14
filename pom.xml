@@ -1,11 +1,10 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.baxter</groupId>
 	<artifactId>parent</artifactId>
-	<version>1.0.9-SNAPSHOT</version>
+	<version>1.0.9</version>
 	<packaging>pom</packaging>
 	<name>Baxter Parent POM</name>
 
@@ -17,8 +16,8 @@
 	</organization>
 
 	<scm>
-		<connection>scm:svn:svn://svn/pe/baxter-parent/trunk</connection>
-		<developerConnection>scm:svn:svn://svn/pe/baxter-parent/trunk</developerConnection>
+		<connection>scm:svn:svn://svn/pe/baxter-parent/tags/parent-1.0.9</connection>
+		<developerConnection>scm:svn:svn://svn/pe/baxter-parent/tags/parent-1.0.9</developerConnection>
 	</scm>
 
 	<url>http://qa/products/baxter-parent</url>
