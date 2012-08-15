@@ -97,7 +97,7 @@
 										<issueManagementSystem>JIRA</issueManagementSystem>
 									</issueManagementSystems>
 									<onlyCurrentVersion>${jira.onlyCurrentVersion}</onlyCurrentVersion>
-									<fixVersionIds>${fixVersionIds}</fixVersionIds>
+									<fixVersionIds>${jira.fixVersionIds}</fixVersionIds>
 									<statusIds>${jira.statusIds}</statusIds>
 									<resolutionIds>${jira.resolutionIds}</resolutionIds>
 									<columnNames>${jira.columnNames}</columnNames>
