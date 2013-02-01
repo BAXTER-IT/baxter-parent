@@ -103,6 +103,7 @@
 									<columnNames>${jira.columnNames}</columnNames>
 									<sortColumnNames>${jira.sortColumnNames}</sortColumnNames>
 									<component>${jira.component}</component>
+								    <useJql>true</useJql>
 									<jiraUser>${jira.user}</jiraUser>
 									<jiraPassword>${jira.password}</jiraPassword>
 								</configuration>
