@@ -429,7 +429,7 @@
 	            -->
                 <!-- Should not be changed -->
                 <apt.target.directory>scp://${apt.user}:dummy@${apt.server}:${apt.remote.directory}/</apt.target.directory>
-                <apt.install.command>reprepro -b ${apt.repo.directory} -C {apt.repo.component} includedeb ${apt.repo.codename} /home/${apt.user}/apt-templates/${project.build.finalName}.deb</apt.install.command>
+                <apt.install.command>reprepro -b ${apt.repo.directory} -C ${apt.repo.component} includedeb ${apt.repo.codename} /home/${apt.user}/apt-templates/${project.build.finalName}.deb</apt.install.command>
             </properties>
 
         </profile>
