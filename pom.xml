@@ -4,7 +4,7 @@
 
 	<groupId>com.baxter</groupId>
 	<artifactId>parent</artifactId>
-	<version>1.0.19-SNAPSHOT</version>
+	<version>1.1.0-SNAPSHOT</version>
 	<packaging>pom</packaging>
 	<name>Baxter Parent POM</name>
 
@@ -199,12 +199,6 @@
                     <artifactId>wagon-maven-plugin</artifactId>
                     <version>1.0-beta-4</version>
                 </plugin>
-
-                <plugin>
-                    <groupId>com.github.goldin</groupId>
-                    <artifactId>sshexec-maven-plugin</artifactId>
-                    <version>0.2.5</version>
-                </plugin>
             </plugins>
         </pluginManagement>
         <plugins>
@@ -391,45 +385,16 @@
                                 </execution>
                             </executions>
                         </plugin>
-                        <plugin>
-                            <groupId>com.github.goldin</groupId>
-                            <artifactId>sshexec-maven-plugin</artifactId>
-                            <executions>
-                                <execution>
-                                    <id>install-deb-remotely</id>
-                                    <phase>deploy</phase>
-                                    <goals>
-                                        <goal>sshexec</goal>
-                                    </goals>
-                                    <configuration>
-                                        <verbose>true</verbose>
-                                        <location>${apt.target.directory}</location>
-                                        <keyfile>${apt.user.key}</keyfile>
-                                        <commands>
-                                            <command>${apt.install.command}</command>
-                                        </commands>
-                                    </configuration>
-                                </execution>
-                            </executions>
-                        </plugin>
                     </plugins>
                 </pluginManagement>
             </build>
 
             <properties>
                 <!-- following can be overriden in settings.xml or in command line -->
-                <apt.user>aptadmin</apt.user>
-                <apt.user.key>${user.home}/.ssh/id_rsa</apt.user.key>
-                <apt.server>aptserver</apt.server>
-                <apt.remote.directory>/home/${apt.user}/apt-templates</apt.remote.directory>
-                <!--
-	            <apt.repo.directory>/var/www/nginx-default/xcde</apt.repo.directory>
-	            <apt.repo.component>non-free</apt.repo.component>
-	            <apt.repo.codename>xcde</apt.repo.codename>
-	            -->
+                <apt.user>cdbaxter</apt.user>
+                <apt.server>cdbaxter</apt.server>
                 <!-- Should not be changed -->
-                <apt.target.directory>scp://${apt.user}:dummy@${apt.server}:${apt.remote.directory}/</apt.target.directory>
-                <apt.install.command>reprepro -b ${apt.repo.directory} -C ${apt.repo.component} includedeb ${apt.repo.codename} /home/${apt.user}/apt-templates/${project.build.finalName}.deb</apt.install.command>
+                <apt.target.directory>scp://${apt.user}@${apt.server}:/home/${apt.user}/apt-incomings/</apt.target.directory>
             </properties>
 
         </profile>
