@@ -4,7 +4,7 @@
 
 	<groupId>com.baxter</groupId>
 	<artifactId>parent</artifactId>
-	<version>1.0.15</version>
+	<version>1.0.16-SNAPSHOT</version>
 	<packaging>pom</packaging>
 	<name>Baxter Parent POM</name>
 
@@ -16,8 +16,8 @@
 	</organization>
 
 	<scm>
-		<connection>scm:svn:svn://svn/pe/baxter-parent/tags/parent-1.0.15</connection>
-		<developerConnection>scm:svn:svn://svn/pe/baxter-parent/tags/parent-1.0.15</developerConnection>
+		<connection>scm:svn:svn://svn/pe/baxter-parent/trunk</connection>
+		<developerConnection>scm:svn:svn://svn/pe/baxter-parent/trunk</developerConnection>
 	</scm>
 
 	<url>http://qa/products/baxter-parent</url>
