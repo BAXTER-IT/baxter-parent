@@ -391,10 +391,13 @@
 
             <properties>
                 <!-- following can be overriden in settings.xml or in command line -->
+                <!--
                 <apt.user>cdbaxter</apt.user>
                 <apt.server>cdbaxter</apt.server>
+                -->
+                <apt.incomings>/opt/aptrepo/incomings</apt.incomings>
                 <!-- Should not be changed -->
-                <apt.target.directory>scp://${apt.user}@${apt.server}:/home/${apt.user}/apt-incomings/</apt.target.directory>
+                <apt.target.directory>scp://${apt.user}@${apt.server}:${apt.incomings}</apt.target.directory>
             </properties>
 
         </profile>
