@@ -371,7 +371,7 @@
                             <artifactId>wagon-maven-plugin</artifactId>
                             <executions>
                                 <execution>
-                                    <id>copy-toapt-server</id>
+                                    <id>copy-deb-to-apt</id>
                                     <phase>deploy</phase>
                                     <goals>
                                         <goal>upload</goal>
