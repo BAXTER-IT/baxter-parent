@@ -17,9 +17,9 @@
 	</organization>
 
 	<scm>
-		<connection>scm:git:git://git.cloudbees.com/baxter/baxter-parent.git</connection>
-		<developerConnection>scm:git:git@git.cloudbees.com:baxter/baxter-parent.git</developerConnection>
-		<url>git@git.cloudbees.com:baxter/baxter-parent.git</url>
+		<connection>scm:git:ssh://git@git.cloudbees.com/baxter/baxter-parent.git</connection>
+		<developerConnection>scm:git:ssh://git@git.cloudbees.com/baxter/baxter-parent.git</developerConnection>
+		<url>ssh://git@git.cloudbees.com/baxter/baxter-parent.git</url>
 		<tag>HEAD</tag>
 	</scm>
 
