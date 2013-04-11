@@ -1,6 +1,7 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
-    <modelVersion>4.0.0</modelVersion>
+	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.baxter</groupId>
 	<artifactId>parent</artifactId>
@@ -8,421 +9,433 @@
 	<packaging>pom</packaging>
 	<name>Baxter Parent POM</name>
 
-    <inceptionYear>2012</inceptionYear>
+	<inceptionYear>2012</inceptionYear>
 
-    <organization>
+	<organization>
 		<name>Baxter Technologies Ltd</name>
 		<url>http://baxter-it.com</url>
 	</organization>
 
-    <scm>
-        <connection>scm:svn:svn://svn/pe/baxter-parent/trunk</connection>
-        <developerConnection>scm:svn:svn://svn/pe/baxter-parent/trunk</developerConnection>
-    </scm>
+	<scm>
+		<connection>scm:git:ssh://git@git.cloudbees.com/baxter/baxter-parent.git</connection>
+		<developerConnection>scm:git:ssh://git@git.cloudbees.com/baxter/baxter-parent.git</developerConnection>
+	</scm>
 
-    <url>http://qa/products/baxter-parent</url>
+	<url>http://qa/products/baxter-parent</url>
 
-    <licenses>
+	<licenses>
 
-        <license>
-            <name>Baxter Default</name>
-            <url>http://baxter.com/licenses/DEFAULT-1.0.txt</url>
-            <comments>Some comments to a license</comments>
-            <distribution>manual</distribution>
-        </license>
+		<license>
+			<name>Baxter Default</name>
+			<url>http://baxter.com/licenses/DEFAULT-1.0.txt</url>
+			<comments>Some comments to a license</comments>
+			<distribution>manual</distribution>
+		</license>
 
-    </licenses>
+	</licenses>
 
-    <distributionManagement>
-
-        <repository>
-            <id>release.baxter</id>
-            <name>Baxter Maven Repository Switchboard</name>
-            <layout>default</layout>
-            <url>http://qa/nexus/content/repositories/baxter-repository</url>
-        </repository>
-
-        <snapshotRepository>
-            <id>snapshot.baxter</id>
-            <name>Baxter Snapshots Repository</name>
-            <url>http://qa/nexus/content/repositories/baxter-snapshot/</url>
-        </snapshotRepository>
-
-        <site>
-            <id>qa-apache</id>
-            <url>scp://qa/var/www/products/baxter-parent</url>
-        </site>
-
-    </distributionManagement>
-
-    <build>
-        <pluginManagement>
-            <plugins>
-                <plugin>
-                    <artifactId>maven-compiler-plugin</artifactId>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <version>2.5.1</version>
-                    <configuration>
-                        <source>1.6</source>
-                        <target>1.6</target>
-                        <encoding>UTF-8</encoding>
-                    </configuration>
-                </plugin>
-                <plugin>
-                    <artifactId>maven-jar-plugin</artifactId>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <version>2.4</version>
-                    <configuration>
-                        <archive>
+	<build>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<artifactId>maven-compiler-plugin</artifactId>
+					<groupId>org.apache.maven.plugins</groupId>
+					<version>2.5.1</version>
+					<configuration>
+						<source>1.7</source>
+						<target>1.7</target>
+						<encoding>UTF-8</encoding>
+					</configuration>
+				</plugin>
+				<plugin>
+					<artifactId>maven-jar-plugin</artifactId>
+					<groupId>org.apache.maven.plugins</groupId>
+					<version>2.4</version>
+					<configuration>
+						<archive>
 							<manifestEntries>
 								<Date>${maven.build.timestamp}</Date>
 								<Revision>${buildNumber}</Revision>
 								<Branch>${scmBranch}</Branch>
 							</manifestEntries>
 						</archive>
-                    </configuration>
-                </plugin>
-                <plugin>
-                    <artifactId>maven-site-plugin</artifactId>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <version>3.1</version>
-                    <configuration>
-                        <reportPlugins>
-                            <plugin>
-                                <groupId>org.apache.maven.plugins</groupId>
-                                <artifactId>maven-changes-plugin</artifactId>
-                                <version>2.9-SNAPSHOT</version>
-                                <configuration>
-                                    <issueManagementSystems>
-                                        <issueManagementSystem>JIRA</issueManagementSystem>
-                                    </issueManagementSystems>
-                                    <onlyCurrentVersion>${jira.onlyCurrentVersion}</onlyCurrentVersion>
-                                    <fixVersionIds>${jira.fixVersionIds}</fixVersionIds>
-                                    <statusIds>${jira.statusIds}</statusIds>
-                                    <resolutionIds>${jira.resolutionIds}</resolutionIds>
-                                    <columnNames>${jira.columnNames}</columnNames>
-                                    <sortColumnNames>${jira.sortColumnNames}</sortColumnNames>
-                                    <component>${jira.component}</component>
-                                    <useJql>true</useJql>
-                                    <jiraUser>${jira.user}</jiraUser>
-                                    <jiraPassword>${jira.password}</jiraPassword>
-                                </configuration>
-                                <reportSets>
-                                    <reportSet>
-                                        <reports>
-                                            <report>changes-report</report>
-                                            <report>jira-report</report>
-                                        </reports>
-                                    </reportSet>
-                                </reportSets>
-                            </plugin>
-                            <plugin>
-                                <groupId>org.apache.maven.plugins</groupId>
-                                <artifactId>maven-project-info-reports-plugin</artifactId>
-                                <version>2.5</version>
-                                <reportSets>
-                                    <reportSet>
-                                        <reports>
-                                            <report>index</report>
-                                            <report>summary</report>
-                                            <report>license</report>
-                                            <report>project-team</report>
-                                            <report>cim</report>
-                                            <report>scm</report>
-                                            <report>issue-tracking</report>
-                                            <report>modules</report>
-                                        </reports>
-                                    </reportSet>
-                                </reportSets>
-                            </plugin>
-                        </reportPlugins>
-                    </configuration>
-                </plugin>
-                <plugin>
-                    <artifactId>maven-resources-plugin</artifactId>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <version>2.5</version>
-                    <configuration>
-                        <encoding>UTF-8</encoding>
-                    </configuration>
-                </plugin>
-                <plugin>
-                    <artifactId>maven-dependency-plugin</artifactId>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <version>2.6</version>
-                </plugin>
-                <plugin>
-                    <artifactId>unix-maven-plugin</artifactId>
-                    <groupId>org.codehaus.mojo</groupId>
-                    <version>1.0-alpha-5</version>
-                </plugin>
-                <plugin>
-                    <artifactId>buildnumber-maven-plugin</artifactId>
-                    <groupId>org.codehaus.mojo</groupId>
-                    <version>1.0</version>
-                </plugin>
-                <plugin>
-                    <groupId>org.eclipse.m2e</groupId>
-                    <artifactId>lifecycle-mapping</artifactId>
-                    <version>1.0.0</version>
-                    <configuration>
-                        <lifecycleMappingMetadata>
-                            <pluginExecutions>
-                                <pluginExecution>
-                                    <pluginExecutionFilter>
-                                        <groupId>org.apache.maven.plugins</groupId>
-                                        <artifactId>maven-dependency-plugin</artifactId>
-                                        <versionRange>[2.4,)</versionRange>
-                                        <goals>
-                                            <goal>copy-dependencies</goal>
-                                        </goals>
-                                    </pluginExecutionFilter>
-                                    <action>
-                                        <ignore />
-                                    </action>
-                                </pluginExecution>
-                            </pluginExecutions>
-                        </lifecycleMappingMetadata>
-                    </configuration>
-                </plugin>
-                <plugin>
-                    <artifactId>maven-release-plugin</artifactId>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <version>2.3.2</version>
-                    <configuration>
-                        <preparationGoals>clean install</preparationGoals>
-                        <autoVersionSubmodules>true</autoVersionSubmodules>
-                    </configuration>
-                </plugin>
-                <plugin>
-                    <groupId>org.codehaus.mojo</groupId>
-                    <artifactId>wagon-maven-plugin</artifactId>
-                    <version>1.0-beta-4</version>
-                </plugin>
-            </plugins>
-        </pluginManagement>
-        <plugins>
-            <plugin>
-                <artifactId>buildnumber-maven-plugin</artifactId>
-                <groupId>org.codehaus.mojo</groupId>
-                <configuration>
-                    <doCheck>false</doCheck>
-                    <doUpdate>false</doUpdate>
-                    <getRevisionOnlyOnce>true</getRevisionOnlyOnce>
-                </configuration>
-                <executions>
-                    <execution>
-                        <phase>prepare-package</phase>
-                        <goals>
-                            <goal>create</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-            <plugin>
-                <artifactId>maven-site-plugin</artifactId>
-                <groupId>org.apache.maven.plugins</groupId>
-                <executions>
-                    <execution>
-                        <id>attach-site-desc</id>
-                        <phase>package</phase>
-                        <goals>
-                            <goal>attach-descriptor</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-        </plugins>
+					</configuration>
+				</plugin>
+				<plugin>
+					<artifactId>maven-site-plugin</artifactId>
+					<groupId>org.apache.maven.plugins</groupId>
+					<version>3.1</version>
+					<configuration>
+						<reportPlugins>
+							<plugin>
+								<groupId>org.apache.maven.plugins</groupId>
+								<artifactId>maven-changes-plugin</artifactId>
+								<version>2.9-SNAPSHOT</version>
+								<configuration>
+									<issueManagementSystems>
+										<issueManagementSystem>JIRA</issueManagementSystem>
+									</issueManagementSystems>
+									<onlyCurrentVersion>${jira.onlyCurrentVersion}</onlyCurrentVersion>
+									<fixVersionIds>${jira.fixVersionIds}</fixVersionIds>
+									<statusIds>${jira.statusIds}</statusIds>
+									<resolutionIds>${jira.resolutionIds}</resolutionIds>
+									<columnNames>${jira.columnNames}</columnNames>
+									<sortColumnNames>${jira.sortColumnNames}</sortColumnNames>
+									<component>${jira.component}</component>
+									<useJql>true</useJql>
+									<jiraUser>${jira.user}</jiraUser>
+									<jiraPassword>${jira.password}</jiraPassword>
+								</configuration>
+								<reportSets>
+									<reportSet>
+										<reports>
+											<report>changes-report</report>
+											<report>jira-report</report>
+										</reports>
+									</reportSet>
+								</reportSets>
+							</plugin>
+							<plugin>
+								<groupId>org.apache.maven.plugins</groupId>
+								<artifactId>maven-project-info-reports-plugin</artifactId>
+								<version>2.5</version>
+								<reportSets>
+									<reportSet>
+										<reports>
+											<report>index</report>
+											<report>summary</report>
+											<report>license</report>
+											<report>project-team</report>
+											<report>cim</report>
+											<report>scm</report>
+											<report>issue-tracking</report>
+											<report>modules</report>
+										</reports>
+									</reportSet>
+								</reportSets>
+							</plugin>
+						</reportPlugins>
+					</configuration>
+				</plugin>
+				<plugin>
+					<artifactId>maven-resources-plugin</artifactId>
+					<groupId>org.apache.maven.plugins</groupId>
+					<version>2.5</version>
+					<configuration>
+						<encoding>UTF-8</encoding>
+					</configuration>
+				</plugin>
+				<plugin>
+					<artifactId>maven-dependency-plugin</artifactId>
+					<groupId>org.apache.maven.plugins</groupId>
+					<version>2.6</version>
+				</plugin>
+				<plugin>
+					<artifactId>unix-maven-plugin</artifactId>
+					<groupId>org.codehaus.mojo</groupId>
+					<version>1.0-alpha-5</version>
+				</plugin>
+				<plugin>
+					<artifactId>buildnumber-maven-plugin</artifactId>
+					<groupId>org.codehaus.mojo</groupId>
+					<version>1.0</version>
+				</plugin>
+				<plugin>
+					<groupId>org.eclipse.m2e</groupId>
+					<artifactId>lifecycle-mapping</artifactId>
+					<version>1.0.0</version>
+					<configuration>
+						<lifecycleMappingMetadata>
+							<pluginExecutions>
+								<pluginExecution>
+									<pluginExecutionFilter>
+										<groupId>org.apache.maven.plugins</groupId>
+										<artifactId>maven-dependency-plugin</artifactId>
+										<versionRange>[2.4,)</versionRange>
+										<goals>
+											<goal>copy-dependencies</goal>
+										</goals>
+									</pluginExecutionFilter>
+									<action>
+										<ignore />
+									</action>
+								</pluginExecution>
+							</pluginExecutions>
+						</lifecycleMappingMetadata>
+					</configuration>
+				</plugin>
+				<plugin>
+					<artifactId>maven-release-plugin</artifactId>
+					<groupId>org.apache.maven.plugins</groupId>
+					<version>2.3.2</version>
+					<configuration>
+						<preparationGoals>clean install</preparationGoals>
+						<autoVersionSubmodules>true</autoVersionSubmodules>
+					</configuration>
+				</plugin>
+				<plugin>
+					<groupId>org.codehaus.mojo</groupId>
+					<artifactId>wagon-maven-plugin</artifactId>
+					<version>1.0-beta-4</version>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+		<plugins>
+			<plugin>
+				<artifactId>buildnumber-maven-plugin</artifactId>
+				<groupId>org.codehaus.mojo</groupId>
+				<configuration>
+					<doCheck>false</doCheck>
+					<doUpdate>false</doUpdate>
+					<getRevisionOnlyOnce>true</getRevisionOnlyOnce>
+				</configuration>
+				<executions>
+					<execution>
+						<phase>prepare-package</phase>
+						<goals>
+							<goal>create</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<artifactId>maven-site-plugin</artifactId>
+				<groupId>org.apache.maven.plugins</groupId>
+				<executions>
+					<execution>
+						<id>attach-site-desc</id>
+						<phase>package</phase>
+						<goals>
+							<goal>attach-descriptor</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
 
-        <extensions>
-            <extension>
-                <groupId>org.apache.maven.wagon</groupId>
-                <artifactId>wagon-ssh</artifactId>
-                <version>2.2</version>
-            </extension>
-        </extensions>
+		<extensions>
+			<extension>
+				<groupId>org.apache.maven.wagon</groupId>
+				<artifactId>wagon-ssh</artifactId>
+				<version>2.2</version>
+			</extension>
+		</extensions>
 
-    </build>
+	</build>
 
-    <dependencyManagement>
-        <dependencies>
-            <dependency>
-                <groupId>junit</groupId>
-                <artifactId>junit</artifactId>
-                <version>4.8</version>
-            </dependency>
-            <dependency>
-                <groupId>org.mockito</groupId>
-                <artifactId>mockito-all</artifactId>
-                <version>1.8.5</version>
-            </dependency>
-            <dependency>
-                <groupId>org.slf4j</groupId>
-                <artifactId>slf4j-api</artifactId>
-                <version>1.6.1</version>
-            </dependency>
-        </dependencies>
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>junit</groupId>
+				<artifactId>junit</artifactId>
+				<version>4.8</version>
+			</dependency>
+			<dependency>
+				<groupId>org.mockito</groupId>
+				<artifactId>mockito-all</artifactId>
+				<version>1.8.5</version>
+			</dependency>
+			<dependency>
+				<groupId>org.slf4j</groupId>
+				<artifactId>slf4j-api</artifactId>
+				<version>1.6.1</version>
+			</dependency>
+		</dependencies>
 
-    </dependencyManagement>
+	</dependencyManagement>
 
-    <pluginRepositories>
-        <pluginRepository>
-            <!-- TODO until the 2.9 changes plugin is released -->
-            <id>apache.snapshots</id>
-            <url>http://repository.apache.org/snapshots/</url>
-            <releases>
-                <enabled>true</enabled>
-            </releases>
-            <snapshots>
-                <enabled>true</enabled>
-            </snapshots>
-        </pluginRepository>
-    </pluginRepositories>
+	<pluginRepositories>
+		<pluginRepository>
+			<!-- TODO until the 2.9 changes plugin is released -->
+			<id>apache.snapshots</id>
+			<url>http://repository.apache.org/snapshots/</url>
+			<releases>
+				<enabled>true</enabled>
+			</releases>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+		</pluginRepository>
+	</pluginRepositories>
 
-    <dependencies>
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.mockito</groupId>
-            <artifactId>mockito-all</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-api</artifactId>
-        </dependency>
-    </dependencies>
+	<dependencies>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.mockito</groupId>
+			<artifactId>mockito-all</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+		</dependency>
+	</dependencies>
 
-    <profiles>
+	<profiles>
 
-        <profile>
-            <id>ReplaceVersion</id>
-            <!-- Should be used before the release to adjust developmentVersion javadoc 
+		<profile>
+			<id>ReplaceVersion</id>
+			<!-- Should be used before the release to adjust developmentVersion javadoc 
 				tags in source files. -->
-            <!-- Invoke as: mvn clean process-sources -DreplaceDevelopmentVersion=X.Y.Z -->
-            <!-- The java sources should contain @since ${developmentVersion} for 
+			<!-- Invoke as: mvn clean process-sources -DreplaceDevelopmentVersion=X.Y.Z -->
+			<!-- The java sources should contain @since ${developmentVersion} for 
 				API elements -->
-            <activation>
-                <property>
-                    <name>replaceDevelopmentVersion</name>
-                </property>
-            </activation>
-            <build>
-                <pluginManagement>
-                    <plugins>
-                        <plugin>
-                            <groupId>com.google.code.maven-replacer-plugin</groupId>
-                            <artifactId>maven-replacer-plugin</artifactId>
-                            <version>1.4.1</version>
-                            <configuration>
-                                <token>$${developmentVersion}</token>
-                                <value>${replaceDevelopmentVersion}</value>
-                                <includes>
-                                    <include>**/*.java</include>
-                                </includes>
-                                <ignoreErrors>true</ignoreErrors>
-                                <regex>false</regex>
-                            </configuration>
-                            <executions>
-                                <execution>
-                                    <id>replace-development-version</id>
-                                    <phase>process-sources</phase>
-                                    <goals>
-                                        <goal>replace</goal>
-                                    </goals>
-                                    <configuration>
-                                        <basedir>${project.build.sourceDirectory}</basedir>
-                                    </configuration>
-                                </execution>
-                                <execution>
-                                    <id>replace-test-development-version</id>
-                                    <phase>process-sources</phase>
-                                    <goals>
-                                        <goal>replace</goal>
-                                    </goals>
-                                    <configuration>
-                                        <basedir>${project.build.testSourceDirectory}</basedir>
-                                    </configuration>
-                                </execution>
-                            </executions>
-                        </plugin>
-                    </plugins>
-                </pluginManagement>
-                <plugins>
-                    <plugin>
-                        <groupId>com.google.code.maven-replacer-plugin</groupId>
-                        <artifactId>maven-replacer-plugin</artifactId>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
+			<activation>
+				<property>
+					<name>replaceDevelopmentVersion</name>
+				</property>
+			</activation>
+			<build>
+				<pluginManagement>
+					<plugins>
+						<plugin>
+							<groupId>com.google.code.maven-replacer-plugin</groupId>
+							<artifactId>maven-replacer-plugin</artifactId>
+							<version>1.4.1</version>
+							<configuration>
+								<token>$${developmentVersion}</token>
+								<value>${replaceDevelopmentVersion}</value>
+								<includes>
+									<include>**/*.java</include>
+								</includes>
+								<ignoreErrors>true</ignoreErrors>
+								<regex>false</regex>
+							</configuration>
+							<executions>
+								<execution>
+									<id>replace-development-version</id>
+									<phase>process-sources</phase>
+									<goals>
+										<goal>replace</goal>
+									</goals>
+									<configuration>
+										<basedir>${project.build.sourceDirectory}</basedir>
+									</configuration>
+								</execution>
+								<execution>
+									<id>replace-test-development-version</id>
+									<phase>process-sources</phase>
+									<goals>
+										<goal>replace</goal>
+									</goals>
+									<configuration>
+										<basedir>${project.build.testSourceDirectory}</basedir>
+									</configuration>
+								</execution>
+							</executions>
+						</plugin>
+					</plugins>
+				</pluginManagement>
+				<plugins>
+					<plugin>
+						<groupId>com.google.code.maven-replacer-plugin</groupId>
+						<artifactId>maven-replacer-plugin</artifactId>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
 
-        <profile>
-            <id>APT</id>
+		<profile>
+			<id>APT</id>
 
-            <build>
-                <pluginManagement>
-                    <plugins>
-                        <plugin>
-                            <groupId>org.codehaus.mojo</groupId>
-                            <artifactId>wagon-maven-plugin</artifactId>
-                            <executions>
-                                <execution>
-                                    <id>copy-deb-to-apt</id>
-                                    <phase>deploy</phase>
-                                    <goals>
-                                        <goal>upload</goal>
-                                    </goals>
-                                    <configuration>
-                                        <serverId>apt.baxter</serverId>
-                                        <url>${apt.target.directory}</url>
-                                        <fromDir>${project.build.directory}</fromDir>
-                                        <includes>${project.build.finalName}.deb</includes>
-                                    </configuration>
-                                </execution>
-                            </executions>
-                        </plugin>
-                    </plugins>
-                </pluginManagement>
-            </build>
+			<build>
+				<pluginManagement>
+					<plugins>
+						<plugin>
+							<groupId>org.codehaus.mojo</groupId>
+							<artifactId>wagon-maven-plugin</artifactId>
+							<executions>
+								<execution>
+									<id>copy-deb-to-apt</id>
+									<phase>deploy</phase>
+									<goals>
+										<goal>upload</goal>
+									</goals>
+									<configuration>
+										<serverId>apt.baxter</serverId>
+										<url>${apt.target.directory}</url>
+										<fromDir>${project.build.directory}</fromDir>
+										<includes>${project.build.finalName}.deb</includes>
+									</configuration>
+								</execution>
+							</executions>
+						</plugin>
+					</plugins>
+				</pluginManagement>
+			</build>
 
-            <properties>
-                <!-- following can be overriden in settings.xml or in command line -->
-                <!--
-                <apt.user>cdbaxter</apt.user>
-                <apt.server>cdbaxter</apt.server>
-                -->
-                <apt.incomings>/opt/aptrepo/incomings</apt.incomings>
-                <!-- Should not be changed -->
-                <apt.target.directory>scp://${apt.user}@${apt.server}:${apt.incomings}</apt.target.directory>
-            </properties>
+			<properties>
+				<!-- following can be overriden in settings.xml or in command line -->
+				<!-- <apt.user>cdbaxter</apt.user> <apt.server>cdbaxter</apt.server> -->
+				<apt.incomings>/opt/aptrepo/incomings</apt.incomings>
+				<!-- Should not be changed -->
+				<apt.target.directory>scp://${apt.user}@${apt.server}:${apt.incomings}</apt.target.directory>
+			</properties>
 
-        </profile>
+		</profile>
 
-    </profiles>
+		<profile>
+			<id>Distribution-CloudBees</id>
+			<distributionManagement>
+				<repository>
+					<id>cloudbees-private-release-repository</id>
+					<name>Cloudbees Release Repository</name>
+					<url>https://repository-baxter.forge.cloudbees.com/release</url>
+				</repository>
+				<snapshotRepository>
+					<id>cloudbees-private-snapshot-repository</id>
+					<name>Cloudbees Snapshot Repository</name>
+					<url>https://repository-baxter.forge.cloudbees.com/snapshot</url>
+				</snapshotRepository>
+			</distributionManagement>
+		</profile>
 
-    <properties>
-        <!-- In order to use JIRA report the project must contain issueManagemtn 
+		<profile>
+			<id>Distribution-Baxter</id>
+			<distributionManagement>
+				<repository>
+					<id>release.baxter</id>
+					<name>Baxter Maven Repository Switchboard</name>
+					<layout>default</layout>
+					<url>http://qa/nexus/content/repositories/baxter-repository</url>
+				</repository>
+				<snapshotRepository>
+					<id>snapshot.baxter</id>
+					<name>Baxter Snapshots Repository</name>
+					<url>http://qa/nexus/content/repositories/baxter-snapshot/</url>
+				</snapshotRepository>
+				<site>
+					<id>qa-apache</id>
+					<url>scp://qa/var/www/products/baxter-parent</url>
+				</site>
+			</distributionManagement>
+		</profile>
+
+	</profiles>
+
+	<properties>
+		<!-- In order to use JIRA report the project must contain issueManagemtn 
 			configuration like following: <issueManagement><system>JIRA</system> <url>http://jira.baxter-fx.com/jira/BrowseProject.jspa?id=10420</url></issueManagement> -->
-        <!-- Constants for JIRA setup -->
-        <jira.resolution.WontFix>Won't Fix</jira.resolution.WontFix>
-        <jira.resolution.CannotReproduce>Cannot Reproduce</jira.resolution.CannotReproduce>
-        <jira.column.FixVersion>Fix Version</jira.column.FixVersion>
-        <jira.status.InProgress>In Progress</jira.status.InProgress>
-        <!-- For JIRA Report -->
-        <jira.onlyCurrentVersion>true</jira.onlyCurrentVersion>
-        <jira.fixVersionIds />
-        <jira.component>${project.artifactId}</jira.component>
-        <jira.statusIds>Open,${jira.status.InProgress},Reopened,Resolved,Closed</jira.statusIds>
-        <jira.resolutionIds>Unresolved,Fixed,${jira.resolution.WontFix},Duplicate,Incomplete,${jira.resolution.CannotReproduce}</jira.resolutionIds>
-        <jira.columnNames>Key,Type,Summary,Status,Resolution,${jira.column.FixVersion},Assignee</jira.columnNames>
-        <jira.sortColumnNames>Id ASC,Fix Version DESC</jira.sortColumnNames>
-        <!-- You may override with your own credentials -->
-        <jira.user>mavenreader</jira.user>
-        <jira.password>mavenreader99</jira.password>
-    </properties>
+		<!-- Constants for JIRA setup -->
+		<jira.resolution.WontFix>Won't Fix</jira.resolution.WontFix>
+		<jira.resolution.CannotReproduce>Cannot Reproduce</jira.resolution.CannotReproduce>
+		<jira.column.FixVersion>Fix Version</jira.column.FixVersion>
+		<jira.status.InProgress>In Progress</jira.status.InProgress>
+		<!-- For JIRA Report -->
+		<jira.onlyCurrentVersion>true</jira.onlyCurrentVersion>
+		<jira.fixVersionIds />
+		<jira.component>${project.artifactId}</jira.component>
+		<jira.statusIds>Open,${jira.status.InProgress},Reopened,Resolved,Closed</jira.statusIds>
+		<jira.resolutionIds>Unresolved,Fixed,${jira.resolution.WontFix},Duplicate,Incomplete,${jira.resolution.CannotReproduce}</jira.resolutionIds>
+		<jira.columnNames>Key,Type,Summary,Status,Resolution,${jira.column.FixVersion},Assignee</jira.columnNames>
+		<jira.sortColumnNames>Id ASC,Fix Version DESC</jira.sortColumnNames>
+		<!-- You may override with your own credentials -->
+		<jira.user>mavenreader</jira.user>
+		<jira.password>mavenreader99</jira.password>
+	</properties>
 
 </project>
