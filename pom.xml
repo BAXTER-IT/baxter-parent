@@ -419,6 +419,18 @@
 				</site>
 			</distributionManagement>
 		</profile>
+		
+		<profile>
+			<id>cloudbees.private.release.repository</id>
+			<repositories>
+				<repository>
+					<id>cloudbees-private-repository</id>
+					<url>https://repository-baxter.forge.cloudbees.com/private</url>
+					<releases><enabled>true</enabled></releases>
+					<snapshots><enabled>false</enabled></snapshots>
+				</repository>
+			</repositories>
+		</profile>
 
 	</profiles>
 
