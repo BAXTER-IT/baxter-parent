@@ -169,7 +169,6 @@
 					<groupId>org.apache.maven.plugins</groupId>
 					<version>2.3.2</version>
 					<configuration>
-						<preparationGoals>clean install</preparationGoals>
 						<autoVersionSubmodules>true</autoVersionSubmodules>
 					</configuration>
 				</plugin>
