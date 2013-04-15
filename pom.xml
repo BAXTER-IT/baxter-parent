@@ -71,7 +71,7 @@
 							<plugin>
 								<groupId>org.apache.maven.plugins</groupId>
 								<artifactId>maven-changes-plugin</artifactId>
-								<version>2.9-SNAPSHOT</version>
+								<version>2.9</version>
 								<configuration>
 									<issueManagementSystems>
 										<issueManagementSystem>JIRA</issueManagementSystem>
@@ -248,20 +248,6 @@
 		</dependencies>
 
 	</dependencyManagement>
-
-	<pluginRepositories>
-		<pluginRepository>
-			<!-- TODO until the 2.9 changes plugin is released -->
-			<id>apache.snapshots</id>
-			<url>http://repository.apache.org/snapshots/</url>
-			<releases>
-				<enabled>true</enabled>
-			</releases>
-			<snapshots>
-				<enabled>true</enabled>
-			</snapshots>
-		</pluginRepository>
-	</pluginRepositories>
 
 	<dependencies>
 		<dependency>
