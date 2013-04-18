@@ -406,16 +406,16 @@
 					<id>release.baxter</id>
 					<name>Baxter Maven Repository Switchboard</name>
 					<layout>default</layout>
-					<url>http://qa/nexus/content/repositories/baxter-repository</url>
+					<url>http://qa.baxtersol.bit/nexus/content/repositories/baxter-repository</url>
 				</repository>
 				<snapshotRepository>
 					<id>snapshot.baxter</id>
 					<name>Baxter Snapshots Repository</name>
-					<url>http://qa/nexus/content/repositories/baxter-snapshot/</url>
+					<url>http://qa.baxtersol.bit/nexus/content/repositories/baxter-snapshot/</url>
 				</snapshotRepository>
 				<site>
 					<id>qa-apache</id>
-					<url>scp://qa/var/www/products/baxter-parent</url>
+					<url>scp://qa.baxtersol.bit/var/www/products/baxter-parent</url>
 				</site>
 			</distributionManagement>
 		</profile>
