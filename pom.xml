@@ -72,26 +72,10 @@
 								<groupId>org.apache.maven.plugins</groupId>
 								<artifactId>maven-changes-plugin</artifactId>
 								<version>2.9</version>
-								<configuration>
-									<issueManagementSystems>
-										<issueManagementSystem>JIRA</issueManagementSystem>
-									</issueManagementSystems>
-									<onlyCurrentVersion>${jira.onlyCurrentVersion}</onlyCurrentVersion>
-									<fixVersionIds>${jira.fixVersionIds}</fixVersionIds>
-									<statusIds>${jira.statusIds}</statusIds>
-									<resolutionIds>${jira.resolutionIds}</resolutionIds>
-									<columnNames>${jira.columnNames}</columnNames>
-									<sortColumnNames>${jira.sortColumnNames}</sortColumnNames>
-									<component>${jira.component}</component>
-									<useJql>true</useJql>
-									<jiraUser>${jira.user}</jiraUser>
-									<jiraPassword>${jira.password}</jiraPassword>
-								</configuration>
 								<reportSets>
 									<reportSet>
 										<reports>
 											<report>changes-report</report>
-											<report>jira-report</report>
 										</reports>
 									</reportSet>
 								</reportSets>
@@ -437,24 +421,6 @@
 	</profiles>
 
 	<properties>
-		<!-- In order to use JIRA report the project must contain issueManagemtn 
-			configuration like following: <issueManagement><system>JIRA</system> <url>http://jira.baxter-fx.com/jira/BrowseProject.jspa?id=10420</url></issueManagement> -->
-		<!-- Constants for JIRA setup -->
-		<jira.resolution.WontFix>Won't Fix</jira.resolution.WontFix>
-		<jira.resolution.CannotReproduce>Cannot Reproduce</jira.resolution.CannotReproduce>
-		<jira.column.FixVersion>Fix Version</jira.column.FixVersion>
-		<jira.status.InProgress>In Progress</jira.status.InProgress>
-		<!-- For JIRA Report -->
-		<jira.onlyCurrentVersion>true</jira.onlyCurrentVersion>
-		<jira.fixVersionIds />
-		<jira.component>${project.artifactId}</jira.component>
-		<jira.statusIds>Open,${jira.status.InProgress},Reopened,Resolved,Closed</jira.statusIds>
-		<jira.resolutionIds>Unresolved,Fixed,${jira.resolution.WontFix},Duplicate,Incomplete,${jira.resolution.CannotReproduce}</jira.resolutionIds>
-		<jira.columnNames>Key,Type,Summary,Status,Resolution,${jira.column.FixVersion},Assignee</jira.columnNames>
-		<jira.sortColumnNames>Id ASC,Fix Version DESC</jira.sortColumnNames>
-		<!-- You may override with your own credentials -->
-		<jira.user>mavenreader</jira.user>
-		<jira.password>mavenreader99</jira.password>
 	</properties>
 
 </project>
