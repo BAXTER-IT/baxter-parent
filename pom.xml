@@ -538,6 +538,9 @@
                                 <provides>
                                     <provide>${unix.package}</provide>
                                 </provides>
+                                <defineStatements>
+                                  <defineStatement>__jar_repack %{nil}</defineStatement>
+                                </defineStatements>                            
                             </configuration>
                             <executions>
                                 <execution>
