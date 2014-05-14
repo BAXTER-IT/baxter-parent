@@ -16,9 +16,9 @@
     </organization>
 
     <scm>
-        <connection>scm:git:ssh://git@git.cloudbees.com/baxter/baxter-parent.git</connection>
-        <developerConnection>scm:git:ssh://git@git.cloudbees.com/baxter/baxter-parent.git</developerConnection>
-        <url>ssh://git@git.cloudbees.com/baxter/baxter-parent.git</url>
+        <connection>scm:git:ssh://git@github.com:BAXTER-IT/baxter-parent.git</connection>
+        <developerConnection>scm:git:ssh://git@github.com:BAXTER-IT/baxter-parent.git</developerConnection>
+        <url>ssh://git@github.com:BAXTER-IT/baxter-parent.git</url>
         <tag>HEAD</tag>
     </scm>
 
@@ -621,7 +621,7 @@
                     <url>http://baxter.artifactoryonline.com/baxter/baxter-releases</url>
                 </repository>
                 <snapshotRepository>
-                    <id>artifactory-private-snapshot-repository</id>
+                    <id>artifactory-snapshot-repository</id>
                     <name>Artifactory Snapshot Repository</name>
                     <url>http://baxter.artifactoryonline.com/baxter/baxter-snapshots</url>
                 </snapshotRepository>
@@ -692,7 +692,7 @@
         </profile>
 
         <profile>
-            <id>artifactory.private.repository</id>
+            <id>artifactory.stable.repository</id>
             <repositories>
                 <repository>
                     <id>artifactory-stable-repository</id>
