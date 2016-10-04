@@ -621,6 +621,7 @@
 
 		<unix.application.bin.dir>/usr/bin</unix.application.bin.dir>
 		<unix.application.lib.dir>/usr/share/java</unix.application.lib.dir>
+		<unix.application.log.dir>/var/log/baxter</unix.application.log.dir>
 		<unix.config>/etc/baxter/config</unix.config>
 
 		<unix.application.alt.root>/opt/baxter</unix.application.alt.root>
