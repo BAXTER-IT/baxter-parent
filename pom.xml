@@ -6,7 +6,7 @@
 
 	<groupId>com.baxter</groupId>
 	<artifactId>parent</artifactId>
-	<version>1.14</version>
+	<version>1.13-SNAPSHOT</version>
 	<packaging>pom</packaging>
 	<name>Baxter Parent POM</name>
 
